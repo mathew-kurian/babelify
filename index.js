@@ -60,6 +60,8 @@ Babelify.configure = function (opts) {
   if (opts.plugins && opts.plugins._) opts.plugins = opts.plugins._;
   if (opts.presets && opts.presets._) opts.presets = opts.presets._;
 
+  if (opts.env) process.env.BABEL_ENV = opts.env;
+
   return function (filename) {
     if (!babel.util.canCompile(filename, extensions)) {
       return stream.PassThrough();
